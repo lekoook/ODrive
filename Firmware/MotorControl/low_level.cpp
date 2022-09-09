@@ -30,7 +30,7 @@ const uint32_t stack_size_analog_thread = 1024;  // Bytes
 
 // This value is updated by the DC-bus reading ADC.
 // Arbitrary non-zero inital value to avoid division by zero if ADC reading is late
-float vbus_voltage = 12.0f;
+float vbus_voltage = 49.0f;
 float ibus_ = 0.0f; // exposed for monitoring only
 bool brake_resistor_armed = false;
 bool brake_resistor_saturated = false;
@@ -314,7 +314,8 @@ float get_adc_relative_voltage_ch(uint16_t channel) {
 
 void vbus_sense_adc_cb(uint32_t adc_value) {
     constexpr float voltage_scale = adc_ref_voltage * VBUS_S_DIVIDER_RATIO / adc_full_scale;
-    vbus_voltage = adc_value * voltage_scale;
+    // vbus_voltage = adc_value * voltage_scale;
+    vbus_voltage = 49.0f;
 }
 
 // @brief Sums up the Ibus contribution of each motor and updates the
